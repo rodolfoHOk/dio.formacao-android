@@ -15,3 +15,9 @@
 ## Introdução Prática à Linguagem de Programação Kotlin
 
 - [Códigos fonte](/kotlin/src/m1_introducao_pratica/)
+
+## Estruturas de Controle de Fluxo e Coleções em Kotlin
+
+- [Controle de Fluxo Códigos fonte](/kotlin/src/m2_controle_de_fluxo)
+
+<!-- - [Coleções Códigos fonte](/kotlin/src/m3_colecoes) -->
