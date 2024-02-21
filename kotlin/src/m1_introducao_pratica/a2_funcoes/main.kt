@@ -13,6 +13,7 @@ fun sum(x: Int, y: Int): Int {
 }
 
 fun multiply(x: Int, y: Int) = x * y
+//fun multiply(x: Int, y: Int): Int = x * y // Ok
 
 fun main() {
     printMessage("Hello")
