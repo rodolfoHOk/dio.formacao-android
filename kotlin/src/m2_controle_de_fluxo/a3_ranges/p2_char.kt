@@ -1,0 +1,18 @@
+package m2_controle_de_fluxo.a3_ranges
+
+fun main() {
+    for (c in 'a'..'d') {
+        print(c)
+    }
+    print(" ")
+
+    for (c in 'z' downTo 's') {
+        print(c)
+    }
+    print(" ")
+
+    for (c in 'z' downTo 's' step 2) {
+        print(c)
+    }
+    print(" ")
+}
