@@ -23,3 +23,21 @@
 - [Coleções Códigos fonte](/kotlin/src/m3_colecoes)
 
 - [Outras funções de coleções](https://play.kotlinlang.org/byExample/05_Collections)
+
+## Orientação a Objetos e Tipos de Classes na Prática com Kotlin
+
+### Programação Orientada a Objetos (POO)
+
+![Abstração](/files/kotlin-m4-a1-01.png)
+
+![Encapsulamento](/files/kotlin-m4-a2-01.png)
+
+![Herança](/files/kotlin-m4-a3-01.png)
+
+![Polimorfismo](/files/kotlin-m4-a4-01.png)
+
+![POO com Kotlin](/files/kotlin-m4-a5-01.png)
+
+### POO na prática com Kotlin
+
+- [Códigos fonte](/kotlin/src/m4_poo/)
