@@ -20,4 +20,6 @@
 
 - [Controle de Fluxo Códigos fonte](/kotlin/src/m2_controle_de_fluxo)
 
-<!-- - [Coleções Códigos fonte](/kotlin/src/m3_colecoes) -->
+- [Coleções Códigos fonte](/kotlin/src/m3_colecoes)
+
+- [Outras funções de coleções](https://play.kotlinlang.org/byExample/05_Collections)
