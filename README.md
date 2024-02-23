@@ -55,3 +55,9 @@
 ## Material complementar Kotlin
 
 - [PDF](/files/Módulo%201%20-%20Android.pdf)
+
+## Mentoria: Abstraindo domínios usando Orientação a Objetos com Kotlin
+
+- [Video](https://www.youtube.com/watch?v=dQgbec62IMY&t=784s)
+
+- [Código fonte](https://github.com/rleaodev/bootcamp-dio-kotlin)
