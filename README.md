@@ -41,3 +41,13 @@
 ### POO na prática com Kotlin
 
 - [Códigos fonte](/kotlin/src/m4_poo/)
+
+## O Poder das Funções em Kotlin
+
+### Funções de escopo
+
+- [Códigos fonte](/kotlin/src/m5_funcoes/s1_de_escopo/)
+
+### Tipos de funções
+
+- [Códigos fonte](/kotlin/src/m5_funcoes/s2_tipos_de/)
