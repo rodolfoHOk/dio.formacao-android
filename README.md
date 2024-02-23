@@ -51,3 +51,7 @@
 ### Tipos de funções
 
 - [Códigos fonte](/kotlin/src/m5_funcoes/s2_tipos_de/)
+
+## Material complementar Kotlin
+
+- [PDF](/files/Módulo%201%20-%20Android.pdf)
