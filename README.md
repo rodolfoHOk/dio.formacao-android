@@ -69,3 +69,7 @@
 ## Instalando e Configurando o Android Studio
 
 - [PDF](/files/Curso%202%20-%20Instalando%20e%20Configurando%20o%20Android%20Studio.pdf)
+
+## Entendendo a Estrutura e Depurando Apps Android
+
+- [PDF](/files/Curso%203%20-%20Entendendo%20a%20Estrutura%20e%20Depurando%20Apps%20Android.pdf)
