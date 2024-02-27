@@ -73,3 +73,13 @@
 ## Entendendo a Estrutura e Depurando Apps Android
 
 - [PDF](/files/Curso%203%20-%20Entendendo%20a%20Estrutura%20e%20Depurando%20Apps%20Android.pdf)
+
+## Material complementar fundamentos de desenvolvimento mobile nativo para Android
+
+- [PDF](/files/Módulo%203%20-%20Android.pdf)
+
+## Mentoria: Tire Suas Principais Dúvidas Sobre Apps Android Nativos
+
+- [Video](https://www.youtube.com/watch?v=_QITmOw7DkE&t=7s)
+
+- [Código fonte](https://github.com/digitalinnovationone/soccer-news-app)
