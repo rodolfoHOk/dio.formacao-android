@@ -83,3 +83,5 @@
 - [Video](https://www.youtube.com/watch?v=_QITmOw7DkE&t=7s)
 
 - [Código fonte](https://github.com/digitalinnovationone/soccer-news-app)
+
+## Princípios de Interface de Usuário e Layouts Android
