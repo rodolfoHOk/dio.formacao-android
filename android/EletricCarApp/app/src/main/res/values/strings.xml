@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">EletricCarApp</string>
+    <string name="app_name">ElectricCarApp</string>
+    <string name="main_title">Electric Car</string>
+    <string name="tab_cars">Carros</string>
+    <string name="tab_favorites">Favoritos</string>
+    <string name="card_label_price">Preço</string>
+    <string name="card_label_battery">Bateria</string>
+    <string name="card_label_potency">Potência</string>
+    <string name="card_label_recharge">Recarga</string>
 </resources>
