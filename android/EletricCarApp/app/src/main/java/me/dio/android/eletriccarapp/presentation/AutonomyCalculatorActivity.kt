@@ -1,13 +1,14 @@
-package me.dio.android.eletriccarapp
+package me.dio.android.eletriccarapp.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import me.dio.android.eletriccarapp.R
 import java.math.RoundingMode
 
-class MainActivity : AppCompatActivity() {
+class AutonomyCalculatorActivity : AppCompatActivity() {
     lateinit var pricePerKwh : EditText;
     lateinit var kmTraveler: EditText;
     lateinit var btnCalculate : Button;
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_autonomy_calculator)
 
         setupView()
         setupListeners()
