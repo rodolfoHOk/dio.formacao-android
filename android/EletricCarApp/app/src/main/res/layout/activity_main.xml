@@ -167,60 +167,73 @@
         app:layout_constraintStart_toStartOf="@+id/et_km_traveled"
         app:layout_constraintTop_toBottomOf="@+id/et_km_traveled" />
 
-    <RadioGroup
-        android:id="@+id/rg_favorite_food"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="@+id/btn_calculate"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sub_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginHorizontal="16dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_calculate">
 
-        <RadioButton
-            android:id="@+id/rb_pizza"
+        <RadioGroup
+            android:id="@+id/rg_favorite_food"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pizza" />
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <RadioButton
-            android:id="@+id/rb_hamburger"
+            <RadioButton
+                android:id="@+id/rb_pizza"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pizza" />
+
+            <RadioButton
+                android:id="@+id/rb_hamburger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="Hamburger" />
+        </RadioGroup>
+
+        <CheckBox
+            android:id="@+id/cb_task_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Compromisso 1"
+            app:layout_constraintStart_toStartOf="@+id/rg_favorite_food"
+            app:layout_constraintTop_toBottomOf="@+id/rg_favorite_food" />
+
+        <CheckBox
+            android:id="@+id/cb_task_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:text="Hamburger" />
-    </RadioGroup>
+            android:text="Compromisso 2"
+            app:layout_constraintStart_toEndOf="@+id/cb_task_1"
+            app:layout_constraintTop_toBottomOf="@+id/rg_favorite_food" />
 
-    <CheckBox
-        android:id="@+id/cb_task_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Compromisso 1"
-        app:layout_constraintStart_toStartOf="@+id/rg_favorite_food"
-        app:layout_constraintTop_toBottomOf="@+id/rg_favorite_food" />
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/s_lamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lâmpada"
+            app:layout_constraintStart_toStartOf="@+id/cb_task_1"
+            app:layout_constraintTop_toBottomOf="@+id/cb_task_1"
+            app:switchPadding="4dp" />
 
-    <CheckBox
-        android:id="@+id/cb_task_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="Compromisso 2"
-        app:layout_constraintStart_toEndOf="@+id/cb_task_1"
-        app:layout_constraintTop_toBottomOf="@+id/rg_favorite_food" />
-
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/s_lamp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lâmpada"
-        app:switchPadding="4dp"
-        app:layout_constraintStart_toStartOf="@+id/cb_task_1"
-        app:layout_constraintTop_toBottomOf="@+id/cb_task_1" />
-    
-    <Spinner
-        android:id="@+id/sp_cities"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:entries="@array/array_cities"
-        app:layout_constraintTop_toBottomOf="@+id/s_lamp"
-        app:layout_constraintStart_toStartOf="@+id/s_lamp" />
+        <Spinner
+            android:id="@+id/sp_cities"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/array_cities"
+            app:layout_constraintStart_toStartOf="@+id/s_lamp"
+            app:layout_constraintTop_toBottomOf="@+id/s_lamp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
