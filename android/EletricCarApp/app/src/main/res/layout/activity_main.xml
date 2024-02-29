@@ -2,7 +2,6 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -195,7 +194,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hamburger" />
-
     </RadioGroup>
+
+    <TextView
+        android:id="@+id/tv_label_any"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Exemplo CheckBox"
+        app:layout_constraintStart_toStartOf="@+id/rg_favorite_food"
+        app:layout_constraintTop_toBottomOf="@+id/rg_favorite_food" />
+
+    <CheckBox
+        android:id="@+id/cb_task_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Compromisso 1"
+        app:layout_constraintStart_toStartOf="@+id/tv_label_any"
+        app:layout_constraintTop_toBottomOf="@+id/tv_label_any" />
+
+    <CheckBox
+        android:id="@+id/cb_task_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Compromisso 2"
+        app:layout_constraintStart_toStartOf="@+id/cb_task_1"
+        app:layout_constraintTop_toBottomOf="@+id/cb_task_1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
