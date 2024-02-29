@@ -7,4 +7,7 @@
     <string name="card_label_battery">Bateria</string>
     <string name="card_label_potency">Potência</string>
     <string name="card_label_recharge">Recarga</string>
+    <string name="hint_kwh_price">Preço kWh</string>
+    <string name="hint_km_traveled">kM Percorrido</string>
+    <string name="btn_label_calculate">Calcular</string>
 </resources>
