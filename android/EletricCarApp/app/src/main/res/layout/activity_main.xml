@@ -2,6 +2,7 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -166,22 +167,13 @@
         app:layout_constraintStart_toStartOf="@+id/et_km_traveled"
         app:layout_constraintTop_toBottomOf="@+id/et_km_traveled" />
 
-    <TextView
-        android:id="@+id/label_select_favorite_food"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Seleciona a comida favorita"
-        app:layout_constraintStart_toStartOf="@+id/btn_calculate"
-        app:layout_constraintTop_toBottomOf="@+id/btn_calculate" />
-
     <RadioGroup
         android:id="@+id/rg_favorite_food"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="@+id/label_select_favorite_food"
-        app:layout_constraintTop_toBottomOf="@+id/label_select_favorite_food">
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/btn_calculate"
+        app:layout_constraintTop_toBottomOf="@+id/btn_calculate">
 
         <RadioButton
             android:id="@+id/rb_pizza"
@@ -193,31 +185,32 @@
             android:id="@+id/rb_hamburger"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:text="Hamburger" />
     </RadioGroup>
-
-    <TextView
-        android:id="@+id/tv_label_any"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Exemplo CheckBox"
-        app:layout_constraintStart_toStartOf="@+id/rg_favorite_food"
-        app:layout_constraintTop_toBottomOf="@+id/rg_favorite_food" />
 
     <CheckBox
         android:id="@+id/cb_task_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Compromisso 1"
-        app:layout_constraintStart_toStartOf="@+id/tv_label_any"
-        app:layout_constraintTop_toBottomOf="@+id/tv_label_any" />
+        app:layout_constraintStart_toStartOf="@+id/rg_favorite_food"
+        app:layout_constraintTop_toBottomOf="@+id/rg_favorite_food" />
 
     <CheckBox
         android:id="@+id/cb_task_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
         android:text="Compromisso 2"
+        app:layout_constraintStart_toEndOf="@+id/cb_task_1"
+        app:layout_constraintTop_toBottomOf="@+id/rg_favorite_food" />
+
+    <Switch
+        android:id="@+id/s_lamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lâmpada"
         app:layout_constraintStart_toStartOf="@+id/cb_task_1"
         app:layout_constraintTop_toBottomOf="@+id/cb_task_1" />
 
