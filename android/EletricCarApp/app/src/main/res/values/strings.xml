@@ -11,7 +11,6 @@
     <string name="hint_km_traveled">kM Percorrido</string>
     <string name="btn_label_calculate">Calcular</string>
     <string name="tv_autonomy_calculate">Calcular autonomia</string>
-    <string name="test">Test</string>
 
     <string-array name="array_cities">
         <item>Araraquara</item>

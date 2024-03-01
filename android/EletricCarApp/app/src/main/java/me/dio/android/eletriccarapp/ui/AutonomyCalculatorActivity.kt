@@ -10,11 +10,11 @@ import me.dio.android.eletriccarapp.R
 import java.math.RoundingMode
 
 class AutonomyCalculatorActivity : AppCompatActivity() {
-    lateinit var pricePerKwh : EditText
-    lateinit var kmTraveler: EditText
-    lateinit var btnCalculate : Button
-    lateinit var autonomyResult: TextView
-    lateinit var btnClose: ImageView
+    private lateinit var pricePerKwh : EditText
+    private lateinit var kmTraveler: EditText
+    private lateinit var btnCalculate : Button
+    private lateinit var autonomyResult: TextView
+    private lateinit var btnClose: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +23,7 @@ class AutonomyCalculatorActivity : AppCompatActivity() {
         setupListeners()
     }
 
-    fun setupView() {
+    private fun setupView() {
         pricePerKwh = findViewById<EditText>(R.id.et_kwh_price)
         kmTraveler = findViewById(R.id.et_km_traveled)
         btnCalculate = findViewById<Button>(R.id.btn_calculate)
@@ -31,7 +31,7 @@ class AutonomyCalculatorActivity : AppCompatActivity() {
         btnClose = findViewById(R.id.iv_close)
     }
 
-    fun setupListeners() {
+    private fun setupListeners() {
         btnCalculate.setOnClickListener {
             calculate()
         }
@@ -40,7 +40,7 @@ class AutonomyCalculatorActivity : AppCompatActivity() {
         }
     }
 
-    fun calculate() {
+    private fun calculate() {
         val pricePerKwhText = pricePerKwh.text.toString().toBigDecimal()
         val kmTravelerText = kmTraveler.text.toString().toBigDecimal()
         val autonomy = pricePerKwhText.divide(kmTravelerText, 3, RoundingMode.HALF_UP)
