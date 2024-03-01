@@ -3,6 +3,7 @@ package me.dio.android.eletriccarapp.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import me.dio.android.eletriccarapp.R
@@ -19,6 +20,32 @@ class MainActivity : AppCompatActivity() {
         setupView()
         setupListeners()
         setupList()
+        Log.d("LifeCycle: ", "CREATE")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("LifeCycle: ", "START")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("LifeCycle: ", "RESUME")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("LifeCycle: ", "PAUSE")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("LifeCycle: ", "STOP")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("LifeCycle: ", "DESTROY")
     }
 
     fun setupView() {
