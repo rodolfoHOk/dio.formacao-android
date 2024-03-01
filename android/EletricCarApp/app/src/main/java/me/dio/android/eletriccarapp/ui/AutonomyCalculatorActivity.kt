@@ -1,4 +1,4 @@
-package me.dio.android.eletriccarapp.presentation
+package me.dio.android.eletriccarapp.ui
 
 import android.os.Bundle
 import android.widget.Button

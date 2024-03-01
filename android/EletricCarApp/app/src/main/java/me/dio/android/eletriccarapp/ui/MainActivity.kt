@@ -1,14 +1,13 @@
-package me.dio.android.eletriccarapp.presentation
+package me.dio.android.eletriccarapp.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.LinearLayout
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import me.dio.android.eletriccarapp.R
-import me.dio.android.eletriccarapp.presentation.adapter.CarAdapter
+import me.dio.android.eletriccarapp.data.CarFactory
+import me.dio.android.eletriccarapp.ui.adapter.CarAdapter
 
 class MainActivity : AppCompatActivity() {
     lateinit var btnCalculatorRedirect : Button
@@ -34,7 +33,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setupList() {
-        var data = arrayOf("Cupcake", "Donut", "Eclair", "Froyo", "Gingerbread", "Honeycomb", "Ice Cream Sandwich", "Jelly Bean", "KitKat", "Lollipop", "Marshmallow", "Nougat", "Oreo", "Pie")
+        var data = CarFactory.list
         var adapter = CarAdapter(data)
         carsList.adapter = adapter
     }
