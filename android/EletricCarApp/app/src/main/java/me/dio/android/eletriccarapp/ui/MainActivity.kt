@@ -32,11 +32,27 @@ class MainActivity : AppCompatActivity() {
         btnCalculatorRedirect = findViewById(R.id.btn_calculator_redirect)
         carsList = findViewById(R.id.rv_cars_list)
         tabLayout = findViewById(R.id.tab_layout_main)
+        viewPager = findViewById(R.id.view_pager_main)
     }
 
     fun setupTabs() {
         val tabsAdapter = TabsAdapter(this)
         viewPager.adapter = tabsAdapter
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                tab?.let { viewPager.currentItem = it.position }
+            }
+            override fun onTabUnselected(p0: TabLayout.Tab?) {
+            }
+            override fun onTabReselected(p0: TabLayout.Tab?) {
+            }
+        })
+        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                tabLayout.getTabAt(position)?.select()
+                super.onPageSelected(position)
+            }
+        })
     }
 
     fun setupListeners() {
