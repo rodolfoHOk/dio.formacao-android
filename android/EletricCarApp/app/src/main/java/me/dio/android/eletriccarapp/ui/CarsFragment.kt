@@ -5,15 +5,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import me.dio.android.eletriccarapp.R
 import me.dio.android.eletriccarapp.data.CarFactory
 import me.dio.android.eletriccarapp.ui.adapter.CarAdapter
 
 class CarsFragment : Fragment() {
-    private lateinit var btnCalculatorRedirect : Button
+    private lateinit var fabCalculatorRedirect : FloatingActionButton
     private lateinit var carsList: RecyclerView
 
     override fun onCreateView(
@@ -27,22 +27,20 @@ class CarsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupView(view)
-        setupListeners(view)
+        setupListeners()
         setupList()
     }
 
     private fun setupView(view: View) {
         view.let {
-            btnCalculatorRedirect = it.findViewById(R.id.btn_calculator_redirect)
+            fabCalculatorRedirect = it.findViewById(R.id.fab_calculate)
             carsList = it.findViewById(R.id.rv_cars_list)
         }
     }
 
-    private fun setupListeners(view: View) {
-        view.let {
-            btnCalculatorRedirect.setOnClickListener {
-                startActivity(Intent(it.context, AutonomyCalculatorActivity::class.java))
-            }
+    private fun setupListeners() {
+        fabCalculatorRedirect.setOnClickListener {
+            startActivity(Intent(context, AutonomyCalculatorActivity::class.java))
         }
     }
 
