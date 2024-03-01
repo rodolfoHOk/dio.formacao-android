@@ -6,51 +6,37 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
 import me.dio.android.eletriccarapp.R
 import me.dio.android.eletriccarapp.data.CarFactory
 import me.dio.android.eletriccarapp.ui.adapter.CarAdapter
+import me.dio.android.eletriccarapp.ui.adapter.TabsAdapter
 
 class MainActivity : AppCompatActivity() {
     lateinit var btnCalculatorRedirect : Button
     lateinit var carsList: RecyclerView
+    lateinit var tabLayout: TabLayout
+    lateinit var viewPager: ViewPager2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupView()
+        setupTabs()
         setupListeners()
         setupList()
-        Log.d("LifeCycle: ", "CREATE")
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Log.d("LifeCycle: ", "START")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d("LifeCycle: ", "RESUME")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d("LifeCycle: ", "PAUSE")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d("LifeCycle: ", "STOP")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("LifeCycle: ", "DESTROY")
     }
 
     fun setupView() {
         btnCalculatorRedirect = findViewById(R.id.btn_calculator_redirect)
         carsList = findViewById(R.id.rv_cars_list)
+        tabLayout = findViewById(R.id.tab_layout_main)
+    }
+
+    fun setupTabs() {
+        val tabsAdapter = TabsAdapter(this)
+        viewPager.adapter = tabsAdapter
     }
 
     fun setupListeners() {
