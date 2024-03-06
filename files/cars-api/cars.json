@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "price": "R$ 300.000,00",
+    "battery": "300 kWh",
+    "potency": "200cv",
+    "recharge": "30 min",
+    "photoUrl": "https://raw.githubusercontent.com/rodolfoHOk/dio.formacao-android/main/files/cars-api/img/eletric_car.png"
+  },
+  {
+    "id": 2,
+    "price": "R$ 200.000,00",
+    "battery": "230 kWh",
+    "potency": "100cv",
+    "recharge": "20 min",
+    "photoUrl": "https://raw.githubusercontent.com/rodolfoHOk/dio.formacao-android/main/files/cars-api/img/eletric_car.png"
+  },
+  {
+    "id": 3,
+    "price": "R$ 554.000,00",
+    "battery": "430 kWh",
+    "potency": "400cv",
+    "recharge": "60 min",
+    "photoUrl": "https://raw.githubusercontent.com/rodolfoHOk/dio.formacao-android/main/files/cars-api/img/eletric_car.png"
+  },
+  {
+    "id": 4,
+    "price": "R$ 323.000,00",
+    "battery": "130 kWh",
+    "potency": "200cv",
+    "recharge": "50 min",
+    "photoUrl": "https://raw.githubusercontent.com/rodolfoHOk/dio.formacao-android/main/files/cars-api/img/eletric_car.png"
+  }
+]
