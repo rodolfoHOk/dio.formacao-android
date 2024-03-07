@@ -6,5 +6,6 @@ data class Car (
     val battery: String,
     val potency: String,
     val recharge: String,
-    val photoUrl: String
+    val photoUrl: String,
+    var isFavorite: Boolean
 )

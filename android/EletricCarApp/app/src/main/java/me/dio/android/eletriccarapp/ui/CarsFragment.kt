@@ -6,6 +6,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -116,6 +117,10 @@ class CarsFragment : Fragment() {
         carsList.let {
             it.isVisible = true
             it.adapter = carAdapter
+        }
+        carAdapter.carItemListener = { car ->
+            val id = car.id
+            Log.d("Car ID ->", id.toString())
         }
     }
 

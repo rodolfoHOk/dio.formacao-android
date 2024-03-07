@@ -11,7 +11,8 @@ class CarFactory {
                 battery = "300 kWh",
                 potency = "200 cv",
                 recharge = "30 min",
-                photoUrl = "www.google.com.br"
+                photoUrl = "www.google.com.br",
+                isFavorite = false
             ),
             Car(
                 id = 2,
@@ -19,7 +20,8 @@ class CarFactory {
                 battery = "200 kWh",
                 potency = "150cv",
                 recharge = "40 min",
-                photoUrl = "www.google.com.br"
+                photoUrl = "www.google.com.br",
+                isFavorite = false
             )
         )
     }

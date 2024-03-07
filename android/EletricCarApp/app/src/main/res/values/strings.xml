@@ -16,6 +16,7 @@
     <string name="no_internet_message">Ops, internet não disponível</string>
     <string name="response_error">Algo deu errado, por favor tente novamente mais tarde</string>
     <string name="saved_calc">saved_calc</string>
+    <string name="description_favorite">favorite</string>
 
     <string-array name="array_cities">
         <item>Araraquara</item>
