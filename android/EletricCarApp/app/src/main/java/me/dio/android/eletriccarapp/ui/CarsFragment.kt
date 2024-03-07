@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -21,6 +22,7 @@ import java.net.URL
 class CarsFragment : Fragment() {
     private lateinit var fabCalculatorRedirect : FloatingActionButton
     private lateinit var carsList: RecyclerView
+    private lateinit var progressBar: ProgressBar
     private var cars : ArrayList<Car> = ArrayList();
 
     override fun onCreateView(
@@ -42,6 +44,7 @@ class CarsFragment : Fragment() {
         view.let {
             fabCalculatorRedirect = it.findViewById(R.id.fab_calculate)
             carsList = it.findViewById(R.id.rv_cars_list)
+            progressBar = it.findViewById(R.id.pb_loader)
         }
     }
 
@@ -52,8 +55,11 @@ class CarsFragment : Fragment() {
     }
 
     private fun setupList() {
-        val adapter = CarAdapter(cars)
-        carsList.adapter = adapter
+        val carAdapter = CarAdapter(cars)
+        carsList.let {
+            it.visibility = View.VISIBLE
+            it.adapter = carAdapter
+        }
     }
 
     private fun callService() {
@@ -64,7 +70,8 @@ class CarsFragment : Fragment() {
     inner class GetCarsTask : AsyncTask<String, String, String>() {
         override fun onPreExecute() {
             super.onPreExecute()
-            Log.d("GetCarInformationTask", "Iniciando...")
+            Log.d("GetCarsTask", "Iniciando...")
+            progressBar.visibility = View.VISIBLE
         }
 
         override fun doInBackground(vararg params: String?): String {
@@ -112,6 +119,7 @@ class CarsFragment : Fragment() {
                     )
                     cars.add(model)
                 }
+                progressBar.visibility = View.GONE
                 setupList()
             } catch (ex: Exception) {
                 Log.e("Error ->", ex.message.toString())
