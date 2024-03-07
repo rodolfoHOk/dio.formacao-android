@@ -101,3 +101,5 @@
 ## Noções Básicas de Rede em Apps Android com Kotlin
 
 - [Código fonte](https://github.com/digitalinnovationone/eletric-car-app)
+
+- [Retrofit](https://square.github.io/retrofit/)

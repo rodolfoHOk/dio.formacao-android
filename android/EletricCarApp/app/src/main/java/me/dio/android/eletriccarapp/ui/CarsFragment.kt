@@ -4,27 +4,28 @@ import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.os.AsyncTask
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import me.dio.android.eletriccarapp.R
+import me.dio.android.eletriccarapp.data.CarsApi
 import me.dio.android.eletriccarapp.domain.Car
 import me.dio.android.eletriccarapp.ui.adapter.CarAdapter
-import org.json.JSONArray
-import org.json.JSONTokener
-import java.net.HttpURLConnection
-import java.net.URL
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class CarsFragment : Fragment() {
     private lateinit var fabCalculatorRedirect : FloatingActionButton
@@ -32,7 +33,7 @@ class CarsFragment : Fragment() {
     private lateinit var progressBar : ProgressBar
     private lateinit var noInternetImage : ImageView
     private lateinit var noInternetText : TextView
-    private var cars : ArrayList<Car> = ArrayList();
+    private lateinit var carsApi : CarsApi
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,12 +47,13 @@ class CarsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupView(view)
         setupListeners()
+        setupRetrofit()
     }
 
     override fun onResume() {
         super.onResume()
         if (checkForInternet(context)) {
-            callService()
+            getAllCars()
         } else {
             emptyState()
         }
@@ -73,6 +75,35 @@ class CarsFragment : Fragment() {
         }
     }
 
+    private fun setupRetrofit() {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://rodolfohok.github.io/dio.formacao-android.cars-api/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        carsApi = retrofit.create(CarsApi::class.java)
+    }
+
+    private fun getAllCars() {
+        progressBar.isVisible = true
+        carsApi.getAllCars().enqueue(object : Callback<List<Car>> {
+            override fun onResponse(call: Call<List<Car>>, response: Response<List<Car>>) {
+                if (response.isSuccessful) {
+                    progressBar.isVisible = false
+                    noInternetImage.isVisible = false
+                    noInternetText.isVisible = false
+                    response.body()?.let {
+                        setupList(it)
+                    }
+                } else {
+                    Toast.makeText(context, R.string.response_error, Toast.LENGTH_LONG).show()
+                }
+            }
+            override fun onFailure(call: Call<List<Car>>, t: Throwable) {
+                Toast.makeText(context, R.string.response_error, Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
     private fun emptyState() {
         progressBar.isVisible = false
         carsList.isVisible = false
@@ -80,17 +111,12 @@ class CarsFragment : Fragment() {
         noInternetText.isVisible = true
     }
 
-    private fun setupList() {
+    private fun setupList(cars: List<Car>) {
         val carAdapter = CarAdapter(cars)
         carsList.let {
             it.isVisible = true
             it.adapter = carAdapter
         }
-    }
-
-    private fun callService() {
-        val baseUrl = "https://rodolfohok.github.io/dio.formacao-android.cars-api/cars.json"
-        GetCarsTask().execute(baseUrl)
     }
 
     private fun checkForInternet(context: Context?) : Boolean {
@@ -109,68 +135,6 @@ class CarsFragment : Fragment() {
             val networkInfo = connectivityManager.activeNetworkInfo ?: return false
             @Suppress("DEPRECATION")
             return networkInfo.isConnected
-        }
-    }
-
-    inner class GetCarsTask : AsyncTask<String, String, String>() {
-        override fun onPreExecute() {
-            super.onPreExecute()
-            Log.d("GetCarsTask", "Iniciando...")
-            progressBar.isVisible = true
-        }
-
-        override fun doInBackground(vararg params: String?): String {
-            var urlConnection : HttpURLConnection? = null
-            try {
-                val urlBase = URL(params[0])
-                urlConnection = urlBase.openConnection() as HttpURLConnection
-                urlConnection.connectTimeout = 60000
-                urlConnection.readTimeout = 60000
-                urlConnection.setRequestProperty("Accept", "application/json")
-                val responseCode = urlConnection.responseCode
-                if (responseCode == HttpURLConnection.HTTP_OK) {
-                    val response = urlConnection.inputStream.bufferedReader().use {
-                        it.readText()
-                    }
-                    publishProgress(response)
-                } else {
-                    Log.e("Error ->", "Serviço indisponível no momento")
-                }
-            } catch (ex: Exception) {
-                Log.e("Error ->", ex.message.toString())
-            } finally {
-                urlConnection?.disconnect()
-            }
-            return ""
-        }
-
-        override fun onProgressUpdate(vararg values: String?) {
-            try {
-                val jsonArray = JSONTokener(values[0]).nextValue() as JSONArray
-                for (i in 0 until jsonArray.length()) {
-                    val id = jsonArray.getJSONObject(i).getString("id")
-                    val price = jsonArray.getJSONObject(i).getString("price")
-                    val battery = jsonArray.getJSONObject(i).getString("battery")
-                    val potency = jsonArray.getJSONObject(i).getString("potency")
-                    val recharge = jsonArray.getJSONObject(i).getString("recharge")
-                    val photoUrl = jsonArray.getJSONObject(i).getString("photoUrl")
-                    val model = Car(
-                        id = id.toInt(),
-                        price = price,
-                        battery = battery,
-                        potency = potency,
-                        recharge = recharge,
-                        photoUrl = photoUrl
-                    )
-                    cars.add(model)
-                }
-                progressBar.isVisible = false
-                noInternetImage.isVisible = false
-                noInternetText.isVisible = false
-                setupList()
-            } catch (ex: Exception) {
-                Log.e("Error ->", ex.message.toString())
-            }
         }
     }
 }
