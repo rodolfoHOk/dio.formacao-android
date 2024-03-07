@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import me.dio.android.eletriccarapp.R
 import me.dio.android.eletriccarapp.data.CarsApi
+import me.dio.android.eletriccarapp.data.local.CarRepository
 import me.dio.android.eletriccarapp.domain.Car
 import me.dio.android.eletriccarapp.ui.adapter.CarAdapter
 import retrofit2.Call
@@ -119,8 +120,7 @@ class CarsFragment : Fragment() {
             it.adapter = carAdapter
         }
         carAdapter.carItemListener = { car ->
-            val id = car.id
-            Log.d("Car ID ->", id.toString())
+            val isSaved = CarRepository(requireContext()).save(car)
         }
     }
 
