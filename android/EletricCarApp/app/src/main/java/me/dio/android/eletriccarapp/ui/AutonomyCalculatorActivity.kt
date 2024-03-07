@@ -21,6 +21,7 @@ class AutonomyCalculatorActivity : AppCompatActivity() {
         setContentView(R.layout.activity_autonomy_calculator)
         setupView()
         setupListeners()
+        setupCachedAutonomyResult()
     }
 
     private fun setupView() {
@@ -40,10 +41,29 @@ class AutonomyCalculatorActivity : AppCompatActivity() {
         }
     }
 
+    private fun setupCachedAutonomyResult() {
+        val calculatedValue = getSharedPref()
+        autonomyResult.text = calculatedValue.toString()
+    }
+
     private fun calculate() {
         val pricePerKwhText = pricePerKwh.text.toString().toBigDecimal()
         val kmTravelerText = kmTraveler.text.toString().toBigDecimal()
         val autonomy = pricePerKwhText.divide(kmTravelerText, 3, RoundingMode.HALF_UP)
         autonomyResult.text = String.format("%.3f", autonomy)
+        saveSharedPref(autonomy.toFloat())
+    }
+
+    private fun saveSharedPref(result: Float) {
+        val sharedPref = getPreferences(MODE_PRIVATE) ?: return
+        with(sharedPref.edit()) {
+            putFloat(getString(R.string.saved_calc), result)
+            apply()
+        }
+    }
+
+    private fun getSharedPref(): Float {
+        val sharedPref = getPreferences(MODE_PRIVATE)
+        return sharedPref.getFloat(getString(R.string.saved_calc), 0.0f)
     }
 }

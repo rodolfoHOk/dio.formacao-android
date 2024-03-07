@@ -103,3 +103,9 @@
 - [Código fonte](https://github.com/digitalinnovationone/eletric-car-app)
 
 - [Retrofit](https://square.github.io/retrofit/)
+
+## Armazenamento de Dados Essencial em Apps Android com Kotlin
+
+- [Código fonte](https://github.com/digitalinnovationone/eletric-car-app)
+
+- [Shared preferences](https://developer.android.com/training/data-storage/shared-preferences?hl=pt-br)
