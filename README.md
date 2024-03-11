@@ -109,3 +109,17 @@
 - [Código fonte](https://github.com/digitalinnovationone/eletric-car-app)
 
 - [Shared preferences](https://developer.android.com/training/data-storage/shared-preferences?hl=pt-br)
+
+## Visão Geral Sobre o Android Jetpack
+
+- [PDF](files/Curso%2001%20-%20Visão%20Geral%20Sobre%20o%20Android%20Jetpack.pdf)
+
+- [Android JetPack](https://developer.android.com/jetpack?hl=pt-br)
+
+## Explorando Componentes do Material Design em Apps Android
+
+- [PDF](files/Curso%2002%20-%20Explorando%20Componentes%20do%20Material%20Design%20em%20Apps%20Android.pdf)
+
+- [Material.IO](https://m3.material.io/)
+
+- [Buttons](https://m3.material.io/components/buttons/overview)
