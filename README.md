@@ -124,4 +124,6 @@
 
 - [Buttons](https://m3.material.io/components/buttons/overview)
 
-- [TextFields](https://m3.material.io/components/text-fields/overview)
+- [Text Fields](https://m3.material.io/components/text-fields/overview)
+
+- [Bottom Sheets](https://m3.material.io/components/bottom-sheets/overview)
