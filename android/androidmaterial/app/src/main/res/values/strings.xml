@@ -14,4 +14,11 @@
     <string name="test">Test</string>
     <string name="person_1">Person 1</string>
     <string name="person_2">Person 2</string>
+    <string name="qualquer_coisa">Qualquer coisa</string>
+    <string name="favorite">Favorite</string>
+    <string name="more">More</string>
+    <string name="edit">Edit</string>
+    <string name="content_description_search">Content description search</string>
+    <string name="content_description_favorite">Content description favorite</string>
+    <string name="content_description_more">Content description more</string>
 </resources>

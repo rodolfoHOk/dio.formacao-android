@@ -127,3 +127,5 @@
 - [Text Fields](https://m3.material.io/components/text-fields/overview)
 
 - [Bottom Sheets](https://m3.material.io/components/bottom-sheets/overview)
+
+- [Top app bar](https://m3.material.io/components/top-app-bar/overview)
