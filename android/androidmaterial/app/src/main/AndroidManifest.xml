@@ -22,6 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name="me.dio.android.android_material.ButtonsActivity" />
+        <activity android:name="me.dio.android.android_material.TextFieldsActivity" />
     </application>
 
 </manifest>

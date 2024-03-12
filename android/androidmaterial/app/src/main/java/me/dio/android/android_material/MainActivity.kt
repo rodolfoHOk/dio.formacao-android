@@ -11,13 +11,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
-
         insertListeners()
     }
 
     private fun insertListeners() {
         binding.cvButtons.setOnClickListener {
             startActivity(ButtonsActivity.createIntent(this))
+        }
+        binding.cvTextFields.setOnClickListener {
+            startActivity(TextFieldsActivity.createIntent(this))
         }
     }
 }

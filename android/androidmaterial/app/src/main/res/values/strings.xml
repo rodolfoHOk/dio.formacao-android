@@ -10,4 +10,6 @@
     <string name="button_contained">Button Contained</string>
     <string name="button_outlined">Button Outlined</string>
     <string name="button_text">Button Text</string>
+    <string name="label">Label</string>
+    <string name="test">Test</string>
 </resources>
