@@ -24,6 +24,7 @@
         <activity android:name="me.dio.android.android_material.ButtonsActivity" />
         <activity android:name="me.dio.android.android_material.TextFieldsActivity" />
         <activity android:name="me.dio.android.android_material.TopAppBarActivity" />
+        <activity android:name="me.dio.android.android_material.BottomAppBarActivity" />
     </application>
 
 </manifest>
