@@ -131,3 +131,5 @@
 - [Top app bar](https://m3.material.io/components/top-app-bar/overview)
 
 - [Bottom app bar](https://m3.material.io/components/bottom-app-bar/overview)
+
+- [Snackbar](https://m3.material.io/components/snackbar/overview)

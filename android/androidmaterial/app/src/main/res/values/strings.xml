@@ -22,4 +22,6 @@
     <string name="content_description_favorite">Content description favorite</string>
     <string name="content_description_more">Content description more</string>
     <string name="add">Add</string>
+    <string name="showing">Showing</string>
+    <string name="action">Action</string>
 </resources>
