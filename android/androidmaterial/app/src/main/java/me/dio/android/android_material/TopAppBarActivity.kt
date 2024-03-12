@@ -17,7 +17,7 @@ class TopAppBarActivity : AppCompatActivity() {
         binding.topAppBar.setNavigationOnClickListener {
             toast("Clicou no menu de navegação")
         }
-        
+
         binding.topAppBar.setOnMenuItemClickListener {
             when(it.itemId) {
                 R.id.edit -> {
