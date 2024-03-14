@@ -9,6 +9,16 @@
         android:id="@+id/personalDataFragment"
         android:name="me.dio.android.navigation.component.fragments.PersonalDataFragment"
         android:label="PersonalDataFragment"
-        tools:layout="@layout/fragment_personal_data" />
+        tools:layout="@layout/fragment_personal_data" >
+        <action
+            android:id="@+id/go_to_addressFragment"
+            app:destination="@id/addressFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addressFragment"
+        android:name="me.dio.android.navigation.component.fragments.AddressFragment"
+        android:label="AddressFragment"
+        tools:layout="@layout/fragment_address" />
 
 </navigation>
