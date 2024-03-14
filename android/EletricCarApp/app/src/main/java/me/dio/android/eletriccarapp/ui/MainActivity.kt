@@ -1,45 +1,28 @@
 package me.dio.android.eletriccarapp.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import me.dio.android.eletriccarapp.R
-import me.dio.android.eletriccarapp.ui.adapter.TabsAdapter
+import me.dio.android.eletriccarapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    lateinit var tabLayout: TabLayout
-    lateinit var viewPager: ViewPager2
+    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setupView()
-        setupTabs()
+        setContentView(binding.root)
+        setupListeners()
+
+        val navController = findNavController(R.id.nav_host_fragment)
+        NavigationUI.setupWithNavController(binding.bottomNavigation, navController)
     }
 
-    private fun setupView() {
-        tabLayout = findViewById(R.id.tab_layout_main)
-        viewPager = findViewById(R.id.view_pager_main)
-    }
-
-    private fun setupTabs() {
-        val tabsAdapter = TabsAdapter(this)
-        viewPager.adapter = tabsAdapter
-        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                tab?.let { viewPager.currentItem = it.position }
-            }
-            override fun onTabUnselected(p0: TabLayout.Tab?) {
-            }
-            override fun onTabReselected(p0: TabLayout.Tab?) {
-            }
-        })
-        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                tabLayout.getTabAt(position)?.select()
-                super.onPageSelected(position)
-            }
-        })
+    private fun setupListeners() {
+        binding.fabCalculate.setOnClickListener {
+            startActivity(Intent(this, AutonomyCalculatorActivity::class.java))
+        }
     }
 }

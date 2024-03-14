@@ -6,25 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
-import me.dio.android.eletriccarapp.R
 import me.dio.android.eletriccarapp.data.local.CarRepository
+import me.dio.android.eletriccarapp.databinding.CarsFragmentBinding
 import me.dio.android.eletriccarapp.ui.adapter.CarAdapter
 
 class FavoritesFragment : Fragment() {
-    private lateinit var favoritesCarsList : RecyclerView
+    private var _binding: CarsFragmentBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.favorites_fragment, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setupView(view)
+    ): View {
+        _binding = CarsFragmentBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onResume() {
@@ -32,17 +28,11 @@ class FavoritesFragment : Fragment() {
         setupList()
     }
 
-    private fun setupView(view: View) {
-        view.let {
-            favoritesCarsList = it.findViewById(R.id.rv_favorites_cars)
-        }
-    }
-
     private fun setupList() {
         val repository = CarRepository(requireContext())
         val carsList = repository.getAll()
         val carAdapter = CarAdapter(carsList, true)
-        favoritesCarsList.let {
+        binding.rvCarsList.let {
             it.isVisible = true
             it.adapter = carAdapter
         }

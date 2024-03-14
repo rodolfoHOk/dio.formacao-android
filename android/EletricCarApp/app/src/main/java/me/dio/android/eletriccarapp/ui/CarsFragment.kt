@@ -1,7 +1,6 @@
 package me.dio.android.eletriccarapp.ui
 
 import android.content.Context
-import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
@@ -9,17 +8,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import me.dio.android.eletriccarapp.R
 import me.dio.android.eletriccarapp.data.CarsApi
 import me.dio.android.eletriccarapp.data.local.CarRepository
+import me.dio.android.eletriccarapp.databinding.CarsFragmentBinding
 import me.dio.android.eletriccarapp.domain.Car
 import me.dio.android.eletriccarapp.ui.adapter.CarAdapter
 import retrofit2.Call
@@ -29,25 +24,22 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class CarsFragment : Fragment() {
-    private lateinit var fabCalculatorRedirect : FloatingActionButton
-    private lateinit var carsList : RecyclerView
-    private lateinit var progressBar : ProgressBar
-    private lateinit var noInternetImage : ImageView
-    private lateinit var noInternetText : TextView
+    private var _binding: CarsFragmentBinding? = null
+    private val binding get() = _binding!!
+
     private lateinit var carsApi : CarsApi
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.cars_fragment, container, false)
+    ): View {
+        _binding = CarsFragmentBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupView(view)
-        setupListeners()
         setupRetrofit()
     }
 
@@ -60,22 +52,6 @@ class CarsFragment : Fragment() {
         }
     }
 
-    private fun setupView(view: View) {
-        view.let {
-            fabCalculatorRedirect = it.findViewById(R.id.fab_calculate)
-            carsList = it.findViewById(R.id.rv_cars_list)
-            progressBar = it.findViewById(R.id.pb_loader)
-            noInternetImage = it.findViewById(R.id.iv_empty_state)
-            noInternetText = it.findViewById(R.id.tv_no_internet)
-        }
-    }
-
-    private fun setupListeners() {
-        fabCalculatorRedirect.setOnClickListener {
-            startActivity(Intent(context, AutonomyCalculatorActivity::class.java))
-        }
-    }
-
     private fun setupRetrofit() {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://rodolfohok.github.io/dio.formacao-android.cars-api/")
@@ -85,13 +61,13 @@ class CarsFragment : Fragment() {
     }
 
     private fun getAllCars() {
-        progressBar.isVisible = true
+        binding.pbLoader.isVisible = true
         carsApi.getAllCars().enqueue(object : Callback<List<Car>> {
             override fun onResponse(call: Call<List<Car>>, response: Response<List<Car>>) {
                 if (response.isSuccessful) {
-                    progressBar.isVisible = false
-                    noInternetImage.isVisible = false
-                    noInternetText.isVisible = false
+                    binding.pbLoader.isVisible = false
+                    binding.ivEmptyState.isVisible = false
+                    binding.tvNoInternet.isVisible = false
                     response.body()?.let {
                         setupList(it)
                     }
@@ -106,15 +82,15 @@ class CarsFragment : Fragment() {
     }
 
     private fun emptyState() {
-        progressBar.isVisible = false
-        carsList.isVisible = false
-        noInternetImage.isVisible = true
-        noInternetText.isVisible = true
+        binding.pbLoader.isVisible = false
+        binding.rvCarsList.isVisible = false
+        binding.ivEmptyState.isVisible = true
+        binding.tvNoInternet.isVisible = true
     }
 
     private fun setupList(cars: List<Car>) {
         val carAdapter = CarAdapter(cars)
-        carsList.let {
+        binding.rvCarsList.let {
             it.isVisible = true
             it.adapter = carAdapter
         }
