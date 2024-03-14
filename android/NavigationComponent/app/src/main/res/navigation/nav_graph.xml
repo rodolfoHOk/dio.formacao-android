@@ -19,6 +19,12 @@
         android:id="@+id/addressFragment"
         android:name="me.dio.android.navigation.component.fragments.AddressFragment"
         android:label="AddressFragment"
-        tools:layout="@layout/fragment_address" />
+        tools:layout="@layout/fragment_address" >
+
+        <argument
+            android:name="model"
+            app:argType="me.dio.android.navigation.component.models.PersonModel" />
+
+    </fragment>
 
 </navigation>

@@ -140,6 +140,12 @@
 
 - [PDF](files/Curso%2003%20-%20Gerenciando%20o%20Fluxo%20de%20Navegação%20de%20Apps%20Android.pdf)
 
-- [Navigation](https://developer.android.com/guide/navigation)
+- [Navigation](https://developer.android.com/guide/navigation?hl=pt-br)
 
-- [View binding](https://developer.android.com/topic/libraries/view-binding)
+- [View binding](https://developer.android.com/topic/libraries/view-binding?hl=pt-br)
+
+- [Safe Args](https://developer.android.com/guide/navigation/use-graph/safe-args?hl=pt-br)
+
+- [Transmitir dados entre destinos](https://developer.android.com/guide/navigation/use-graph/pass-data?hl=pt-br)
+
+- [Gerador de implementação de Parcelable](https://developer.android.com/kotlin/parcelize?hl=pt-br)
