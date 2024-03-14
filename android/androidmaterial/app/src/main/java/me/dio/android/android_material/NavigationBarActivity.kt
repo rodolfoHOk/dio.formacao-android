@@ -34,7 +34,7 @@ class NavigationBarActivity : AppCompatActivity() {
                 else -> false
             }
         }
-        
+
         binding.bottomNavigation.selectedItemId = R.id.home
     }
 

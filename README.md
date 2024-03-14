@@ -135,3 +135,11 @@
 - [Snackbar](https://m3.material.io/components/snackbar/overview)
 
 - [Navigation bar](https://m3.material.io/components/navigation-bar/overview)
+
+## Gerenciando o Fluxo de Navegação de Apps Android
+
+- [PDF](files/Curso%2003%20-%20Gerenciando%20o%20Fluxo%20de%20Navegação%20de%20Apps%20Android.pdf)
+
+- [Navigation](https://developer.android.com/guide/navigation)
+
+- [View binding](https://developer.android.com/topic/libraries/view-binding)
