@@ -5,4 +5,5 @@
     <string name="btn_text_next">Next</string>
     <string name="hint_street">Street</string>
     <string name="hint_number">Number</string>
+    <string name="btn_text_home">Home</string>
 </resources>

@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import me.dio.android.navigation.component.R
 import me.dio.android.navigation.component.databinding.FragmentPersonalDataBinding
 import me.dio.android.navigation.component.extensions.text
 import me.dio.android.navigation.component.models.PersonModel
