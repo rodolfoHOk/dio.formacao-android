@@ -165,3 +165,7 @@
 - [Processar ciclos de vida](https://developer.android.com/topic/libraries/architecture/lifecycle?hl=pt-br)
 
 - [Código fonte](/android/lifecycle/)
+
+- [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-guide.html)
+
+- [Código fonte](/android/lifecycle/app/urlshortener/)

@@ -1,4 +1,4 @@
-package me.dio.android.urlshortener;
+package me.dio.android.urlshortener.presentation;
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import me.dio.android.urlshortener.databinding.ItemUrlBinding
+import me.dio.android.urlshortener.domain.ShortenedUrl
 
 class UrlsAdapter : ListAdapter<ShortenedUrl, UrlsAdapter.ViewHolder>(DiffCallBack()) {
 
