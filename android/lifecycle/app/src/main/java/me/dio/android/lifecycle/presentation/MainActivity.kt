@@ -1,4 +1,4 @@
-package me.dio.android.lifecycle
+package me.dio.android.lifecycle.presentation
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -7,14 +7,17 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import me.dio.android.lifecycle.R
 import me.dio.android.lifecycle.databinding.ActivityMainBinding
-import me.dio.android.lifecycle.viewmodel.MainViewModel
+import me.dio.android.lifecycle.presentation.counter.MainViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
-    private val viewModel by viewModels<MainViewModel>()
+    private val viewModel by viewModels<MainViewModel>{
+        ViewModelFactory()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

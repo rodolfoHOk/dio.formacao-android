@@ -1,4 +1,4 @@
-package me.dio.android.lifecycle.viewmodel
+package me.dio.android.lifecycle.presentation.counter
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,12 +9,15 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import me.dio.android.lifecycle.R
 import me.dio.android.lifecycle.databinding.FragmentFirstBinding
+import me.dio.android.lifecycle.presentation.ViewModelFactory
 
 class FirstFragment : Fragment() {
     private var _binding: FragmentFirstBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel by activityViewModels<MainViewModel>()
+    private val viewModel by activityViewModels<MainViewModel> {
+        ViewModelFactory()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

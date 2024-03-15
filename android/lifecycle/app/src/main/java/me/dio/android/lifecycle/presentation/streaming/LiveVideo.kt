@@ -1,9 +1,9 @@
-package me.dio.android.lifecycle.streaming
+package me.dio.android.lifecycle.presentation.streaming
 
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 
-class LiveVideo : DefaultLifecycleObserver { // add DefaultLifecycleObserver
+class LiveVideo : DefaultLifecycleObserver {
     override fun onStart(owner: LifecycleOwner) {
         super.onStart(owner)
         // play video
@@ -18,16 +18,4 @@ class LiveVideo : DefaultLifecycleObserver { // add DefaultLifecycleObserver
         super.onDestroy(owner)
         // frees video memory
     }
-
-//    fun start() { // before add DefaultLifecycleObserver
-//        // play video
-//    }
-//
-//    fun stop() { // before add DefaultLifecycleObserver
-//        // pause video
-//    }
-//
-//    fun realise() { // before add DefaultLifecycleObserver
-//        // frees video memory
-//    }
 }

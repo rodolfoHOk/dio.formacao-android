@@ -1,4 +1,4 @@
-package me.dio.android.lifecycle
+package me.dio.android.lifecycle.presentation
 
 import android.app.Activity
 import android.os.Bundle
