@@ -155,3 +155,5 @@
 ### Ciclo de Vida Android ViewModel, LiveData e Coroutines
 
 - [PDF](files/Curso%2004%20-%20Ciclo%20de%20Vida%20Android%20ViewModel,%20LiveData%20e%20Coroutines.pdf)
+
+- [Lifecycle](https://developer.android.com/jetpack/androidx/releases/lifecycle?hl=pt-br)
