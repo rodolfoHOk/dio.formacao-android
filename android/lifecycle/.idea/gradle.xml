@@ -10,6 +10,7 @@
           <set>
             <option value="$USER_HOME$/Documentos/ti/dio/formacao-android/android/lifecycle" />
             <option value="$USER_HOME$/Documentos/ti/dio/formacao-android/android/lifecycle/app" />
+            <option value="$USER_HOME$/Documentos/ti/dio/formacao-android/android/lifecycle/app/urlshortener" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

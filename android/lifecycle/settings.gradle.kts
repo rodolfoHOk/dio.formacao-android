@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "lifecycle"
 include(":app")
+include(":app:urlshortener")
