@@ -14,7 +14,6 @@ import me.dio.android.urlshortener.ViewModelFactory
 import me.dio.android.urlshortener.databinding.FragmentUrlsBinding
 
 class UrlsFragment : Fragment() {
-
     private var _binding: FragmentUrlsBinding? = null
     private val binding get() = _binding!!
 
@@ -35,10 +34,7 @@ class UrlsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.rvShortenedUrls.bind()
-        viewModel.state.observe(viewLifecycleOwner) { urlsState ->
-            urlsAdapter.submitList(urlsState.urls)
-            binding.progress.isVisible = urlsState.isProgressVisible
-        }
+        viewModel.state.observe(viewLifecycleOwner, ::handleState)
     }
 
     override fun onDestroyView() {
@@ -51,5 +47,12 @@ class UrlsFragment : Fragment() {
         val divider = DividerItemDecoration(context, linearLayoutManager.orientation)
         addItemDecoration(divider)
         adapter = urlsAdapter
+    }
+
+    private fun handleState(urlsState: UrlsState) = binding.run {
+        urlsAdapter.submitList(urlsState.urls)
+        progress.isVisible = urlsState.isProgressVisible
+        tvErrorMessage.text = urlsState.errorMessage
+        tvErrorMessage.isVisible = urlsState.isErrorMessageVisible
     }
 }

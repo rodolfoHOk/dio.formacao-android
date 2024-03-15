@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import me.dio.android.urlshortener.domain.ShortenedUrl
 import me.dio.android.urlshortener.domain.UrlsRepository
 
 class UrlsViewModel(
@@ -20,21 +19,15 @@ class UrlsViewModel(
 
     private fun loadUrls() {
         _state.value = UrlsState.Loading
+
         viewModelScope.launch {
-            _state.value = UrlsState.Success(repository.getAll())
+            _state.value = runCatching {
+                repository.getAll()
+            }.fold(onSuccess = { urls ->
+                UrlsState.Success(urls)
+            }, onFailure = { error ->
+                UrlsState.Failed(error.message ?: "Error on load urls")
+            })
         }
-    }
-}
-
-sealed interface UrlsState {
-    val urls: List<ShortenedUrl>
-        get() = listOf()
-    val isProgressVisible: Boolean
-        get() = false
-
-    data class Success(override val urls: List<ShortenedUrl>) : UrlsState
-
-    object Loading : UrlsState {
-        override val isProgressVisible: Boolean = true
     }
 }
