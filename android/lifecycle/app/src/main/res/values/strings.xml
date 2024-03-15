@@ -44,4 +44,5 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="increment">Increment</string>
+    <string name="increment_by">Increment by</string>
 </resources>

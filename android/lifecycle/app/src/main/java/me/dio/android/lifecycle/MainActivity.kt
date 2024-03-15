@@ -8,12 +8,13 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import me.dio.android.lifecycle.databinding.ActivityMainBinding
+import me.dio.android.lifecycle.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
-//    private val viewModel by viewModels<MainViewModel>()
+    private val viewModel by viewModels<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,13 +28,13 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-//        viewModel.counter.observe(this) { counter ->
-//            binding.toolbar.subtitle = counter.toString()
-//        }
-//
-//        binding.fab.setOnClickListener {
-//            viewModel.increment()
-//        }
+        viewModel.counter.observe(this) { counter ->
+            binding.toolbar.subtitle = counter.toString()
+        }
+
+        binding.fab.setOnClickListener {
+            viewModel.increment()
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -10,9 +10,11 @@ class MainViewModel : ViewModel() {
     private val _counter = NumberLiveData(0) // life cycle test
     val counter: LiveData<Int> = _counter
 
+    var incrementBy = 1
+
     fun increment() {
         val number = _counter.value ?: 0
-        _counter.value = number + 1
+        _counter.value = number + incrementBy
     }
 }
 
