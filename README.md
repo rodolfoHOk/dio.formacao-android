@@ -156,4 +156,10 @@
 
 - [PDF](files/Curso%2004%20-%20Ciclo%20de%20Vida%20Android%20ViewModel,%20LiveData%20e%20Coroutines.pdf)
 
-- [Lifecycle](https://developer.android.com/jetpack/androidx/releases/lifecycle?hl=pt-br)
+- [Lifecycle Guide](https://developer.android.com/topic/libraries/architecture/viewmodel?hl=pt-br)
+
+- [Lifecycle Releases](https://developer.android.com/jetpack/androidx/releases/lifecycle?hl=pt-br)
+
+- [Live Data](https://developer.android.com/topic/libraries/architecture/livedata?hl=pt-br)
+
+- [Código fonte](/android/lifecycle/)
