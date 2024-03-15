@@ -1,4 +1,4 @@
-package me.dio.android.lifecycle
+package me.dio.android.lifecycle.viewmodel
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import me.dio.android.lifecycle.R
 import me.dio.android.lifecycle.databinding.FragmentFirstBinding
 
 class FirstFragment : Fragment() {

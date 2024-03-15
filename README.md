@@ -162,4 +162,6 @@
 
 - [Live Data](https://developer.android.com/topic/libraries/architecture/livedata?hl=pt-br)
 
+- [Processar ciclos de vida](https://developer.android.com/topic/libraries/architecture/lifecycle?hl=pt-br)
+
 - [Código fonte](/android/lifecycle/)

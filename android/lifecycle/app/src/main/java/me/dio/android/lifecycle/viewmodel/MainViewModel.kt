@@ -1,4 +1,4 @@
-package me.dio.android.lifecycle
+package me.dio.android.lifecycle.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
