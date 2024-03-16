@@ -19,4 +19,8 @@ sealed interface UrlsState {
     object Loading : UrlsState {
         override val isProgressVisible: Boolean = true
     }
+
+    object Empty : UrlsState {
+        override val errorMessage: String = "Nenhuma URL encontrada"
+    }
 }
