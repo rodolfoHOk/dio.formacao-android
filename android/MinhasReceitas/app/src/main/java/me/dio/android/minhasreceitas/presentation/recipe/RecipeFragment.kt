@@ -1,4 +1,4 @@
-package me.dio.android.minhasreceitas
+package me.dio.android.minhasreceitas.presentation.recipe
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,12 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import me.dio.android.minhasreceitas.R
 import me.dio.android.minhasreceitas.databinding.FragmentFirstBinding
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class FirstFragment : Fragment() {
+class RecipeFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
 
