@@ -6,12 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import me.dio.android.minhasreceitas.databinding.FragmentRecipeBinding
+import me.dio.android.minhasreceitas.presentation.recipe.adapter.RecipeAdapter
 
 class RecipeFragment : Fragment() {
     private var _binding: FragmentRecipeBinding? = null
     private val binding get() = _binding!!
 
-    private val adapter by lazy {  }
+    private val adapter by lazy { RecipeAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +35,7 @@ class RecipeFragment : Fragment() {
     }
 
     private fun setupAdapter() {
-        // TODO create adapter and use here
+        binding.rvRecipes.adapter = adapter
     }
 
     override fun onDestroyView() {
