@@ -5,13 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
-import me.dio.android.minhasreceitas.R
 import me.dio.android.minhasreceitas.databinding.FragmentRecipeBinding
 
 class RecipeFragment : Fragment() {
     private var _binding: FragmentRecipeBinding? = null
     private val binding get() = _binding!!
+
+    private val adapter by lazy {  }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,10 +23,18 @@ class RecipeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupListeners()
+        setupAdapter()
+    }
 
-        binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+    private fun setupListeners() {
+        binding.fabRecipe.setOnClickListener {
+            // TODO show dialog
         }
+    }
+
+    private fun setupAdapter() {
+        // TODO create adapter and use here
     }
 
     override fun onDestroyView() {
