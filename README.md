@@ -172,6 +172,8 @@
 
 ### Simplificando a Persistência de Dados no Android com Room
 
+- [PDF](/files/Curso%2005%20-%20Simplificando%20a%20Persistência%20de%20Dados%20no%20Android%20com%20Room.pdf)
+
 - [Room](https://developer.android.com/training/data-storage/room?hl=pt-br)
 
 - [Código fonte](/android/MinhasReceitas/)
