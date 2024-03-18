@@ -169,3 +169,7 @@
 - [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-guide.html)
 
 - [Código fonte](/android/lifecycle/app/urlshortener/)
+
+### Simplificando a Persistência de Dados no Android com Room
+
+- [Room](https://developer.android.com/training/data-storage/room?hl=pt-br)
