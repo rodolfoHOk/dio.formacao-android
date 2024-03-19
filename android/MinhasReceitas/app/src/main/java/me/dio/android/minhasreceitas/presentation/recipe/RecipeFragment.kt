@@ -5,10 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import me.dio.android.minhasreceitas.databinding.FragmentRecipeBinding
 import me.dio.android.minhasreceitas.presentation.recipe.adapter.RecipeAdapter
 
 class RecipeFragment : Fragment() {
+    private val viewModel: RecipesViewModel by viewModels {
+        RecipesViewModel.Factory()
+    }
+
     private var _binding: FragmentRecipeBinding? = null
     private val binding get() = _binding!!
 
