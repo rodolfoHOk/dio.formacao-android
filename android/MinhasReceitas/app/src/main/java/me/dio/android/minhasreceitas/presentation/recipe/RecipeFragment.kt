@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
 import me.dio.android.minhasreceitas.R
 import me.dio.android.minhasreceitas.databinding.FragmentRecipeBinding
+import me.dio.android.minhasreceitas.presentation.dialog.DialogEditTextFragment
 import me.dio.android.minhasreceitas.presentation.recipe.adapter.RecipeAdapter
 
 class RecipeFragment : Fragment() {
@@ -39,7 +41,11 @@ class RecipeFragment : Fragment() {
 
     private fun setupListeners() {
         binding.fabRecipe.setOnClickListener {
-            // TODO show dialog
+            showDialog()
+        }
+        setFragmentResultListener(DialogEditTextFragment.FRAGMENT_RESULT) { requestKey, bundle ->  
+            val recipeName = bundle.getString(DialogEditTextFragment.EDIT_TEXT_VALUE) ?: ""
+            viewModel.insert(recipeName)
         }
     }
 
@@ -77,6 +83,14 @@ class RecipeFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun showDialog() {
+        DialogEditTextFragment.show(
+            title = getString(R.string.title_new_recipe),
+            placeholder = getString(R.string.label_name_recipe),
+            fragmentManager = parentFragmentManager
+        )
     }
 
     override fun onDestroyView() {

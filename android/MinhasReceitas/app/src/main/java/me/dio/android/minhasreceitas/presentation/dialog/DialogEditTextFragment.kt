@@ -30,7 +30,7 @@ class DialogEditTextFragment : DialogFragment() {
                 .setPositiveButton("Confirmar") { _, _ ->
                     setFragmentResult(
                         FRAGMENT_RESULT, bundleOf(
-                            EDIT_TEXT_VALUE to binding.etEditText.text.toString()
+                            EDIT_TEXT_VALUE to binding.etEditText.editText?.text.toString()
                         )
                     )
                 }.setNegativeButton("Cancelar") { _, _ ->

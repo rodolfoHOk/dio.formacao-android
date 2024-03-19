@@ -3,4 +3,5 @@
     <dimen name="card_elevation">8dp</dimen>
     <dimen name="item_margin">8dp</dimen>
     <dimen name="dialog_padding">16dp</dimen>
+    <dimen name="dialog_space_y">8dp</dimen>
 </resources>
