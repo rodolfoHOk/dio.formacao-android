@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import com.google.android.material.snackbar.Snackbar
+import me.dio.android.minhasreceitas.R
 import me.dio.android.minhasreceitas.databinding.FragmentRecipeBinding
 import me.dio.android.minhasreceitas.presentation.recipe.adapter.RecipeAdapter
 
@@ -31,6 +34,7 @@ class RecipeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupListeners()
         setupAdapter()
+        observeStates()
     }
 
     private fun setupListeners() {
@@ -41,6 +45,38 @@ class RecipeFragment : Fragment() {
 
     private fun setupAdapter() {
         binding.rvRecipes.adapter = adapter
+    }
+
+    private fun observeStates() {
+        viewModel.state.observe(viewLifecycleOwner) {state ->
+            when(state) {
+                RecipeState.Loading -> {
+                    binding.pbLoading.isVisible = true
+                }
+                RecipeState.Empty -> {
+                    binding.pbLoading.isVisible = false
+                    Snackbar.make(
+                        requireContext(),
+                        binding.root,
+                        getString(R.string.label_empty_recipes),
+                        Snackbar.LENGTH_LONG
+                    ).show()
+                }
+                is RecipeState.Failed -> {
+                    binding.pbLoading.isVisible = false
+                    Snackbar.make(
+                        requireContext(),
+                        binding.root,
+                        state.message,
+                        Snackbar.LENGTH_LONG
+                    ).show()
+                }
+                is RecipeState.Success -> {
+                    binding.pbLoading.isVisible = false
+                    adapter.submitList(state.recipes)
+                }
+            }
+        }
     }
 
     override fun onDestroyView() {
