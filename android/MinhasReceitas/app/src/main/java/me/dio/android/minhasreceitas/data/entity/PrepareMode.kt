@@ -9,6 +9,6 @@ typealias PrepareModeEntity = PrepareMode
 @Entity
 data class PrepareMode (
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    @ColumnInfo(name = "name") val name: String,
+    @ColumnInfo(name = "description") val description: String,
     @ColumnInfo(name = "recipeId") val recipeId: Int,
 )

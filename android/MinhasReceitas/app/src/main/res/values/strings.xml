@@ -1,12 +1,15 @@
 <resources>
     <string name="app_name">Minhas Receitas</string>
-    <string name="action_settings">Settings</string>
     <string name="first_fragment_label">Lista de receitas</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="second_fragment_label">Detalhes da receita</string>
     <string name="label_empty_recipes">Ops, não temos nenhuma receita</string>
     <string name="label_failed_get_recipes">Ops, algo deu errado, tente mais tarde novamente</string>
     <string name="title_new_recipe">Nova receita</string>
     <string name="label_name_recipe">Nome da receita</string>
+    <string name="label_ingredients">Ingredientes</string>
+    <string name="label_prepare_mode">Modo de preparo</string>
+    <string name="label_new_ingredient">Novo ingrediente</string>
+    <string name="label_item_description">Descrição do item</string>
+    <string name="label_new_prepare_mode">Novo modo de preparo</string>
+    <string name="action_settings">Confirurações</string>
 </resources>

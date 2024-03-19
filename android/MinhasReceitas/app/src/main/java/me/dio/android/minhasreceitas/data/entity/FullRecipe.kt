@@ -3,6 +3,8 @@ package me.dio.android.minhasreceitas.data.entity
 import androidx.room.Embedded
 import androidx.room.Relation
 
+typealias FullRecipeEntity = FullRecipe
+
 data class FullRecipe(
     @Embedded val recipe: Recipe,
     @Relation(
@@ -14,5 +16,5 @@ data class FullRecipe(
         parentColumn = "id",
         entityColumn = "recipeId"
     )
-    var prepareModes: List<PrepareMode>
+    var prepareMode: List<PrepareMode>
 )
