@@ -177,3 +177,5 @@
 - [Room](https://developer.android.com/training/data-storage/room?hl=pt-br)
 
 - [Código fonte](/android/MinhasReceitas/)
+
+- [Room relationships](https://developer.android.com/training/data-storage/room/relationships?hl=pt-br)
