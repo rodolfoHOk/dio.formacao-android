@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Update
+import kotlinx.coroutines.flow.Flow
 import me.dio.android.minhasreceitas.data.entity.FullRecipeEntity
 import me.dio.android.minhasreceitas.data.entity.Ingredient
 import me.dio.android.minhasreceitas.data.entity.PrepareMode
@@ -14,7 +15,7 @@ import me.dio.android.minhasreceitas.data.entity.Recipe
 @Dao
 interface RecipeDao {
     @Query("SELECT * FROM recipe")
-    fun getAll() : List<Recipe>
+    fun getAll() : Flow<List<Recipe>>
 
     @Insert
     fun insert(recipe: Recipe)

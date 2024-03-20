@@ -1,12 +1,13 @@
 package me.dio.android.minhasreceitas.domain.repository
 
+import kotlinx.coroutines.flow.Flow
 import me.dio.android.minhasreceitas.domain.model.FullRecipeDomain
 import me.dio.android.minhasreceitas.domain.model.IngredientDomain
 import me.dio.android.minhasreceitas.domain.model.PrepareModeDomain
 import me.dio.android.minhasreceitas.domain.model.RecipeDomain
 
 interface RecipeRepository {
-    suspend fun getAll() : List<RecipeDomain>
+    suspend fun getAll() : Flow<List<RecipeDomain>>
 
     suspend fun insert(recipe: RecipeDomain) : Unit
 

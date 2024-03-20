@@ -1,12 +1,15 @@
 package me.dio.android.minhasreceitas.presentation.recipe
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import me.dio.android.minhasreceitas.data.db
 import me.dio.android.minhasreceitas.data.repository.RecipeRepositoryImpl
@@ -18,20 +21,27 @@ class RecipesViewModel(
     private val getAllRecipesUseCase : GetAllRecipesUseCase,
     private val insertRecipeUseCase : InsertRecipeUseCase
 ) : ViewModel() {
-    val state : LiveData<RecipeState> = liveData {
-        emit(RecipeState.Loading)
-        val state = try {
-            val recipes = getAllRecipesUseCase()
-            if (recipes.isEmpty()) {
-                RecipeState.Empty
-            } else {
-                RecipeState.Success(recipes)
+    private val _state = MutableSharedFlow<RecipeState>()
+    val state: SharedFlow<RecipeState> = _state
+
+    init {
+        getAllRecipes()
+    }
+
+    private fun getAllRecipes() = viewModelScope.launch {
+        getAllRecipesUseCase()
+            .flowOn(Dispatchers.Main)
+            .onStart {
+                _state.emit(RecipeState.Loading)
+            }.catch {
+                _state.emit(RecipeState.Failed("Error"))
+            }.collect { recipes ->
+                if (recipes.isEmpty()) {
+                    _state.emit(RecipeState.Empty)
+                } else {
+                    _state.emit(RecipeState.Success(recipes))
+                }
             }
-        } catch (ex: Exception) {
-            Log.e("Error", ex.message.toString())
-            RecipeState.Failed(ex.message.toString())
-        }
-        emit(state)
     }
 
     fun insert(name: String) = viewModelScope.launch {
