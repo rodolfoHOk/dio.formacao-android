@@ -179,3 +179,5 @@
 - [Código fonte](/android/MinhasReceitas/)
 
 - [Room relationships](https://developer.android.com/training/data-storage/room/relationships?hl=pt-br)
+
+- [Usando DAOs do Room](https://developer.android.com/training/data-storage/room/accessing-data?hl=pt-br)

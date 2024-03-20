@@ -11,7 +11,7 @@ import me.dio.android.minhasreceitas.domain.model.PrepareModeDomain
 import me.dio.android.minhasreceitas.domain.model.RecipeDomain
 import me.dio.android.minhasreceitas.domain.repository.RecipeRepository
 
-class RecipeRepositoryImpl (
+class RecipeRepositoryImpl(
     private val dao: RecipeDao
 ) : RecipeRepository {
     override suspend fun getAll(): List<RecipeDomain> = withContext(Dispatchers.IO) {
@@ -24,16 +24,38 @@ class RecipeRepositoryImpl (
         dao.insert(recipe.toEntity())
     }
 
-    override suspend fun insertIngredient(ingredient: IngredientDomain) = withContext(Dispatchers.IO) {
-        dao.insert(ingredient.toEntity())
-    }
+    override suspend fun insertIngredient(ingredient: IngredientDomain) =
+        withContext(Dispatchers.IO) {
+            dao.insert(ingredient.toEntity())
+        }
 
-    override suspend fun insertPrepareMode(prepareMode: PrepareModeDomain) = withContext(Dispatchers.IO) {
-        dao.insert(prepareMode.toEntity())
-    }
+    override suspend fun insertPrepareMode(prepareMode: PrepareModeDomain) =
+        withContext(Dispatchers.IO) {
+            dao.insert(prepareMode.toEntity())
+        }
 
     override suspend fun getRecipeWithIngredientsAndPrepareMode(idRecipe: Int): FullRecipeDomain =
         withContext(Dispatchers.IO) {
             dao.getRecipeWithIngredientsAndPrepareMode(idRecipe).toDomain()
+        }
+
+    override suspend fun updateIngredient(ingredient: IngredientDomain) =
+        withContext(Dispatchers.IO) {
+            dao.updateIngredient(ingredient.toEntity())
+        }
+
+    override suspend fun updatePrepareMode(prepareMode: PrepareModeDomain) =
+        withContext(Dispatchers.IO) {
+            dao.updatePrepareMode(prepareMode.toEntity())
+        }
+
+    override suspend fun deleteIngredient(ingredient: IngredientDomain) =
+        withContext(Dispatchers.IO) {
+            dao.deleteIngredient(ingredient.toEntity())
+        }
+
+    override suspend fun deletePrepareMode(prepareMode: PrepareModeDomain) =
+        withContext(Dispatchers.IO) {
+            dao.deletePrepareMode(prepareMode.toEntity())
         }
 }

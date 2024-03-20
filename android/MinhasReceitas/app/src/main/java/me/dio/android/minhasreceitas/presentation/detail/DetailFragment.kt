@@ -11,7 +11,6 @@ import androidx.navigation.fragment.navArgs
 import me.dio.android.minhasreceitas.R
 import me.dio.android.minhasreceitas.databinding.FragmentDetailBinding
 import me.dio.android.minhasreceitas.presentation.detail.adapter.ItemListAdapter
-import me.dio.android.minhasreceitas.presentation.detail.adapter.ItemListViewModel
 import me.dio.android.minhasreceitas.presentation.dialog.DialogEditTextFragment
 
 class DetailFragment : Fragment() {
@@ -55,10 +54,10 @@ class DetailFragment : Fragment() {
             .observe(viewLifecycleOwner) {
                 when(it) {
                     ItemListState.Loading -> {
-                        // TODO mostrar loading para o usuario
+                        // TODO
                     }
                     is ItemListState.Error -> {
-                        // TODO Mostrar error parar o usuario
+                        // TODO
                     }
                     is ItemListState.Success -> {
                         adapterIngredients.submitList(it.ingredients)
@@ -80,6 +79,34 @@ class DetailFragment : Fragment() {
             viewModel.insertIngredientsOrPrepareMode(
                 typeInsert = typeInsert,
                 name = name,
+                recipeId = args.recipeId
+            )
+        }
+        adapterIngredients.edit = {
+            viewModel.updateIngredient(
+                id = it.id,
+                name = it.name,
+                recipeId = args.recipeId
+            )
+        }
+        adapterIngredients.remove = {
+            viewModel.removeIngredient(
+                id = it.id,
+                name = it.name,
+                recipeId = args.recipeId
+            )
+        }
+        adapterPrepareMode.edit = {
+            viewModel.updatePrepareMode(
+                id = it.id,
+                name = it.name,
+                recipeId = args.recipeId
+            )
+        }
+        adapterPrepareMode.remove = {
+            viewModel.removePrepareMode(
+                id = it.id,
+                name = it.name,
                 recipeId = args.recipeId
             )
         }
