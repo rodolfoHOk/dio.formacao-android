@@ -12,4 +12,6 @@
     <string name="label_item_description">Descrição do item</string>
     <string name="label_new_prepare_mode">Novo modo de preparo</string>
     <string name="action_settings">Confirurações</string>
+    <string name="label_update_ingredient">Atualizar ingrediente</string>
+    <string name="label_update_prepare_mode">Atualizar modo de preparo</string>
 </resources>

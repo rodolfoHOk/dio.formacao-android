@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.snackbar.Snackbar
 import me.dio.android.minhasreceitas.R
 import me.dio.android.minhasreceitas.databinding.FragmentDetailBinding
 import me.dio.android.minhasreceitas.presentation.detail.adapter.ItemListAdapter
@@ -54,12 +56,19 @@ class DetailFragment : Fragment() {
             .observe(viewLifecycleOwner) {
                 when(it) {
                     ItemListState.Loading -> {
-                        // TODO
+                        binding.pbLoading.isVisible = true
                     }
                     is ItemListState.Error -> {
-                        // TODO
+                        binding.pbLoading.isVisible = false
+                        Snackbar.make(
+                            requireContext(),
+                            binding.root,
+                            it.message,
+                            Snackbar.LENGTH_LONG
+                        ).show()
                     }
                     is ItemListState.Success -> {
+                        binding.pbLoading.isVisible = false
                         adapterIngredients.submitList(it.ingredients)
                         adapterPrepareMode.submitList(it.prepareMode)
                     }
@@ -76,18 +85,41 @@ class DetailFragment : Fragment() {
         }
         setFragmentResultListener(DialogEditTextFragment.FRAGMENT_RESULT) { requestKey, bundle ->
             val name = bundle.getString(DialogEditTextFragment.EDIT_TEXT_VALUE) ?: ""
-            viewModel.insertIngredientsOrPrepareMode(
-                typeInsert = typeInsert,
-                name = name,
-                recipeId = args.recipeId
-            )
+            val splitTypeInsert = typeInsert.split(",")
+            when(splitTypeInsert[0]) {
+                "INGREDIENT" -> {
+                    viewModel.insertIngredientsOrPrepareMode(
+                        typeInsert = typeInsert,
+                        name = name,
+                        recipeId = args.recipeId
+                    )
+                }
+                "PREPARE_MODE" -> {
+                    viewModel.insertIngredientsOrPrepareMode(
+                        typeInsert = typeInsert,
+                        name = name,
+                        recipeId = args.recipeId
+                    )
+                }
+                "UPDATE_INGREDIENT" -> {
+                    viewModel.updateIngredient(
+                        id = splitTypeInsert[1].toInt(),
+                        name = name,
+                        recipeId = args.recipeId
+                    )
+                }
+                "UPDATE_PREPARE_MODE" -> {
+                    viewModel.updatePrepareMode(
+                        id = splitTypeInsert[1].toInt(),
+                        name = name,
+                        recipeId = args.recipeId
+                    )
+                }
+                else -> {}
+            }
         }
         adapterIngredients.edit = {
-            viewModel.updateIngredient(
-                id = it.id,
-                name = it.name,
-                recipeId = args.recipeId
-            )
+            showDialogUpdateIngredient(it.id)
         }
         adapterIngredients.remove = {
             viewModel.removeIngredient(
@@ -97,11 +129,7 @@ class DetailFragment : Fragment() {
             )
         }
         adapterPrepareMode.edit = {
-            viewModel.updatePrepareMode(
-                id = it.id,
-                name = it.name,
-                recipeId = args.recipeId
-            )
+            showDialogUpdatePrepareMode(it.id)
         }
         adapterPrepareMode.remove = {
             viewModel.removePrepareMode(
@@ -121,10 +149,28 @@ class DetailFragment : Fragment() {
         )
     }
 
+    private fun showDialogUpdateIngredient(ingredientId: Int) {
+        typeInsert = "UPDATE_INGREDIENT,$ingredientId"
+        DialogEditTextFragment.show(
+            title = getString(R.string.label_update_ingredient),
+            placeholder = getString(R.string.label_item_description),
+            fragmentManager = parentFragmentManager
+        )
+    }
+
     private fun showDialogNewPrepareMode() {
         typeInsert = "PREPARE_MODE"
         DialogEditTextFragment.show(
             title = getString(R.string.label_new_prepare_mode),
+            placeholder = getString(R.string.label_item_description),
+            fragmentManager = parentFragmentManager
+        )
+    }
+
+    private fun showDialogUpdatePrepareMode(prepareModeId: Int) {
+        typeInsert = "UPDATE_PREPARE_MODE,$prepareModeId"
+        DialogEditTextFragment.show(
+            title = getString(R.string.label_update_prepare_mode),
             placeholder = getString(R.string.label_item_description),
             fragmentManager = parentFragmentManager
         )

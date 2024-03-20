@@ -12,6 +12,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
@@ -52,6 +53,12 @@ class RecipeFragment : Fragment() {
         setFragmentResultListener(DialogEditTextFragment.FRAGMENT_RESULT) { requestKey, bundle ->  
             val recipeName = bundle.getString(DialogEditTextFragment.EDIT_TEXT_VALUE) ?: ""
             viewModel.insert(recipeName)
+        }
+        adapter.click = { recipeItem ->
+            val action = RecipeFragmentDirections.actionRecipeFragmentToDetailFragment(
+                recipeItem.id
+            )
+            findNavController().navigate(action)
         }
     }
 

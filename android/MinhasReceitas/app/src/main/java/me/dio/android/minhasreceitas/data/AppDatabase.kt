@@ -13,7 +13,7 @@ import me.dio.android.minhasreceitas.data.entity.Recipe
         Ingredient::class,
         PrepareMode::class
     ],
-    version = 1
+    version = 2
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun recipeDao() : RecipeDao

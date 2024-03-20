@@ -28,6 +28,9 @@ class RecipeAdapter : ListAdapter<RecipeDomain, RecipeAdapter.ViewHolder>(DiffCa
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: RecipeDomain) {
             binding.tvTitle.text = item.name
+            binding.root.setOnClickListener{
+                click(item)
+            }
         }
     }
 }
