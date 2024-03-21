@@ -187,3 +187,5 @@
 - [PDF](/files/Curso%2006%20-%20Programação%20em%20Segundo%20Plano%20no%20Android%20com%20WorkManager.pdf)
 
 - [WorkManager](https://developer.android.com/topic/libraries/architecture/workmanager?hl=pt-br)
+
+- [Código fonte](/android/WorkManager/)
