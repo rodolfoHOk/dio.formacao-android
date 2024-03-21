@@ -181,3 +181,9 @@
 - [Room relationships](https://developer.android.com/training/data-storage/room/relationships?hl=pt-br)
 
 - [Usando DAOs do Room](https://developer.android.com/training/data-storage/room/accessing-data?hl=pt-br)
+
+### Programação em Segundo Plano no Android com WorkManager
+
+- [PDF](/files/Curso%2006%20-%20Programação%20em%20Segundo%20Plano%20no%20Android%20com%20WorkManager.pdf)
+
+- [WorkManager](https://developer.android.com/topic/libraries/architecture/workmanager?hl=pt-br)
