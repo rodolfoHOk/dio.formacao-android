@@ -28,7 +28,7 @@ interface RecipeDao {
 
     @Transaction
     @Query("SELECT * FROM recipe WHERE id = :recipeId")
-    fun getRecipeWithIngredientsAndPrepareMode(recipeId: Int) : FullRecipeEntity
+    fun getRecipeWithIngredientsAndPrepareMode(recipeId: Int) : Flow<FullRecipeEntity>
 
     @Update
     fun updateIngredient(ingredient: Ingredient)

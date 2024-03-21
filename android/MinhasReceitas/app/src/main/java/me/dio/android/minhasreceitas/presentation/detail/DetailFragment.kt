@@ -8,8 +8,14 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.launch
 import me.dio.android.minhasreceitas.R
 import me.dio.android.minhasreceitas.databinding.FragmentDetailBinding
 import me.dio.android.minhasreceitas.presentation.detail.adapter.ItemListAdapter
@@ -21,7 +27,7 @@ class DetailFragment : Fragment() {
     private val args by navArgs<DetailFragmentArgs>()
 
     private val viewModel by viewModels<ItemListViewModel> {
-        ItemListViewModel.Factory()
+        ItemListViewModel.Factory(args.recipeId)
     }
 
     // Como utilizar o concatAdapter para trabalhar apenas com 1 Recycler View
@@ -52,7 +58,7 @@ class DetailFragment : Fragment() {
     }
 
     private fun observe() {
-        viewModel.getRecipeWithIngredientsAndPrepareMode(args.recipeId)
+        viewModel.state
             .observe(viewLifecycleOwner) {
                 when(it) {
                     ItemListState.Loading -> {
@@ -174,6 +180,14 @@ class DetailFragment : Fragment() {
             placeholder = getString(R.string.label_item_description),
             fragmentManager = parentFragmentManager
         )
+    }
+
+    private fun <T> Flow<T>.observe(owner: LifecycleOwner, observe: (T) -> Unit) {
+        owner.lifecycleScope.launch {
+            owner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                this@observe.collect(observe)
+            }
+        }
     }
 
     override fun onDestroyView() {

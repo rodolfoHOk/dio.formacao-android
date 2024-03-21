@@ -38,9 +38,11 @@ class RecipeRepositoryImpl(
             dao.insert(prepareMode.toEntity())
         }
 
-    override suspend fun getRecipeWithIngredientsAndPrepareMode(idRecipe: Int): FullRecipeDomain =
+    override suspend fun getRecipeWithIngredientsAndPrepareMode(idRecipe: Int): Flow<FullRecipeDomain> =
         withContext(Dispatchers.IO) {
-            dao.getRecipeWithIngredientsAndPrepareMode(idRecipe).toDomain()
+            dao.getRecipeWithIngredientsAndPrepareMode(idRecipe).map { recipe ->
+                recipe.toDomain()
+            }
         }
 
     override suspend fun updateIngredient(ingredient: IngredientDomain) =

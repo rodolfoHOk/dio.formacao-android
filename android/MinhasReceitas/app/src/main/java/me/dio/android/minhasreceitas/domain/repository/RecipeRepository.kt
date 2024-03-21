@@ -15,7 +15,7 @@ interface RecipeRepository {
 
     suspend fun insertPrepareMode(prepareMode: PrepareModeDomain) : Unit
 
-    suspend fun getRecipeWithIngredientsAndPrepareMode(idRecipe: Int): FullRecipeDomain
+    suspend fun getRecipeWithIngredientsAndPrepareMode(idRecipe: Int): Flow<FullRecipeDomain>
 
     suspend fun updateIngredient(ingredient: IngredientDomain) : Unit
 

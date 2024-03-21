@@ -1,12 +1,15 @@
 package me.dio.android.minhasreceitas.presentation.detail
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import me.dio.android.minhasreceitas.data.db
 import me.dio.android.minhasreceitas.data.repository.RecipeRepositoryImpl
@@ -29,21 +32,29 @@ class ItemListViewModel(
     private val updateIngredientUseCase: UpdateIngredientUseCase,
     private val updatePrepareModeUseCase: UpdatePrepareModeUseCase,
     private val deleteIngredientUseCase: DeleteIngredientUseCase,
-    private val deletePrepareModeUseCase: DeletePrepareModeUseCase
+    private val deletePrepareModeUseCase: DeletePrepareModeUseCase,
+    private val recipeId: Int
 ) : ViewModel() {
-    fun getRecipeWithIngredientsAndPrepareMode(recipeId: Int): LiveData<ItemListState> = liveData {
-        emit(ItemListState.Loading)
-        val state = try {
-            val fullRecipe = getRecipeWithIngredientsAndPrepareModeUseCase(recipeId)
-            ItemListState.Success(
-                ingredients = fullRecipe.ingredients.toModelIngredient(),
-                prepareMode = fullRecipe.prepareMode.toModelPrepareMode()
-            )
-        } catch (ex: Exception) {
-            Log.e("Error", ex.message.toString())
-            ItemListState.Error(ex.message.toString())
-        }
-        emit(state)
+    private val _state = MutableSharedFlow<ItemListState>()
+    val state : SharedFlow<ItemListState> = _state
+
+    init {
+        getRecipeWithIngredientsAndPrepareMode()
+    }
+
+    private fun getRecipeWithIngredientsAndPrepareMode() = viewModelScope.launch {
+        getRecipeWithIngredientsAndPrepareModeUseCase(recipeId)
+            .flowOn(Dispatchers.Main)
+            .onStart {
+                _state.emit(ItemListState.Loading)
+            }.catch {
+                _state.emit(ItemListState.Error("Error"))
+            }.collect {fullRecipe ->
+                _state.emit(ItemListState.Success(
+                    ingredients = fullRecipe.ingredients.toModelIngredient(),
+                    prepareMode = fullRecipe.prepareMode.toModelPrepareMode()
+                ))
+            }
     }
 
     fun insertIngredientsOrPrepareMode(typeInsert: String, name: String, recipeId: Int) =
@@ -83,7 +94,9 @@ class ItemListViewModel(
         )
     }
 
-    class Factory : ViewModelProvider.Factory {
+    class Factory(
+        private val recipeId: Int
+    ) : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {
             val application =
@@ -97,7 +110,8 @@ class ItemListViewModel(
                 updateIngredientUseCase = UpdateIngredientUseCase(repository),
                 updatePrepareModeUseCase = UpdatePrepareModeUseCase(repository),
                 deleteIngredientUseCase = DeleteIngredientUseCase(repository),
-                deletePrepareModeUseCase = DeletePrepareModeUseCase(repository)
+                deletePrepareModeUseCase = DeletePrepareModeUseCase(repository),
+                recipeId = recipeId
             ) as T
         }
     }
