@@ -1,12 +1,10 @@
-package me.dio.android.workmanager.ui
+package me.dio.android.hilt
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import me.dio.android.workmanager.R
-import me.dio.android.workmanager.worker.NotificationWorker
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,9 +17,6 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-//        NotificationWorker.start(this)
-        NotificationWorker.startPeriodic(this)
     }
 
 }

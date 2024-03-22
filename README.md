@@ -189,3 +189,9 @@
 - [WorkManager](https://developer.android.com/topic/libraries/architecture/workmanager?hl=pt-br)
 
 - [Código fonte](/android/WorkManager/)
+
+### Injeção de Dependências no Android com Hilt
+
+- [PDF](/files/Curso%2007%20-%20Injeção%20de%20Dependências%20no%20Android%20com%20Hilt.pdf)
+
+- [Hilt](https://developer.android.com/training/dependency-injection/hilt-android?hl=pt-br)
