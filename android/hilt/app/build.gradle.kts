@@ -42,6 +42,7 @@ kapt {
 }
 
 dependencies {
+    val activity_version = "1.8.2"
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -49,9 +50,10 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
-    implementation("com.google.dagger:hilt-android:2.44")
+    implementation("androidx.activity:activity-ktx:$activity_version")
+    implementation("com.google.dagger:hilt-android:2.48")
 
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.48")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
