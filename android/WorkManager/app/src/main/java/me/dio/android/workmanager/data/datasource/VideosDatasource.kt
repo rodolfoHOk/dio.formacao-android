@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken
 import me.dio.android.workmanager.data.model.Video
 
 object VideosDatasource {
+
     private val list by lazy { arrayListOf<Video>() }
 
     fun setFromFile(assetManager: AssetManager) {
@@ -19,4 +20,7 @@ object VideosDatasource {
             object : TypeToken<T>() {}.type
         )
     }
+
+    fun getRandomVideo(): Video = list.random()
+
 }
