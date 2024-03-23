@@ -11,7 +11,6 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import me.dio.android.hilt.urlshortener.ViewModelFactory
 import me.dio.android.hilt.urlshortener.core.Event
 import me.dio.android.hilt.urlshortener.core.createDialog
 import me.dio.android.hilt.urlshortener.core.createProgressDialog

@@ -1,4 +1,4 @@
-package me.dio.android.hilt.urlshortener.data
+package me.dio.android.hilt.urlshortener.data.repository
 
 import kotlinx.coroutines.flow.Flow
 import me.dio.android.hilt.urlshortener.data.datasource.UrlShortenerDataSource

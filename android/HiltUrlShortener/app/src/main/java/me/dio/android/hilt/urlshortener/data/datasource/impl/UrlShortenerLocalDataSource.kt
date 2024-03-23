@@ -1,26 +1,29 @@
 package me.dio.android.hilt.urlshortener.data.datasource.impl
 
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.onStart
-import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.withContext
+import me.dio.android.hilt.urlshortener.data.dao.ShortenedUrlDao
 import me.dio.android.hilt.urlshortener.data.datasource.UrlShortenerDataSource
+import me.dio.android.hilt.urlshortener.data.model.ShortenedUrlEntity
 import me.dio.android.hilt.urlshortener.domain.ShortenedUrl
 
-class UrlShortenerLocalDataSource : UrlShortenerDataSource.Local {
-    private val urls = MutableStateFlow(emptyList<ShortenedUrl>())
+class UrlShortenerLocalDataSource(
+    private val dao: ShortenedUrlDao
+) : UrlShortenerDataSource.Local {
 
-    override fun getAll(): Flow<List<ShortenedUrl>> = urls.onStart {
-        delay(1_500)
-    }
-
-    override fun add(shortenedUrl: ShortenedUrl) {
-        urls.update { prevValue ->
-            val urls = setOf(shortenedUrl) + prevValue.toSet()
-            urls.toList()
+    override fun getAll(): Flow<List<ShortenedUrl>> = dao.getAll().map { list ->
+        list.map { shortenedUrlEntity ->  
+            ShortenedUrl(original = shortenedUrlEntity.original, url = shortenedUrlEntity.url)
         }
     }
+
+    override suspend fun add(shortenedUrl: ShortenedUrl) = withContext(Dispatchers.IO) {
+        val entity = ShortenedUrlEntity(original = shortenedUrl.original, url = shortenedUrl.url)
+        dao.insert(entity)
+    }
+
 }
 
 //val urls = listOf(

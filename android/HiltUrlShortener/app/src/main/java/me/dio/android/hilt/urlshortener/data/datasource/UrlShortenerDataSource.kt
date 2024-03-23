@@ -6,7 +6,7 @@ import me.dio.android.hilt.urlshortener.domain.ShortenedUrl
 interface UrlShortenerDataSource {
     interface Local {
         fun getAll() : Flow<List<ShortenedUrl>>
-        fun add(shortenedUrl: ShortenedUrl)
+        suspend fun add(shortenedUrl: ShortenedUrl)
     }
 
     interface Remote : UrlShortenerDataSource {
