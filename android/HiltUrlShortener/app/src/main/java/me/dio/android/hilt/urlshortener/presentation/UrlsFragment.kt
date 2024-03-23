@@ -11,18 +11,18 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import dagger.hilt.android.AndroidEntryPoint
 import me.dio.android.hilt.urlshortener.core.Event
 import me.dio.android.hilt.urlshortener.core.createDialog
 import me.dio.android.hilt.urlshortener.core.createProgressDialog
 import me.dio.android.hilt.urlshortener.databinding.FragmentUrlsBinding
 
+@AndroidEntryPoint
 class UrlsFragment : Fragment() {
     private var _binding: FragmentUrlsBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel : UrlsViewModel by viewModels {
-        ViewModelFactory()
-    }
+    private val viewModel : UrlsViewModel by viewModels()
 
     private val urlsAdapter = UrlsAdapter()
 

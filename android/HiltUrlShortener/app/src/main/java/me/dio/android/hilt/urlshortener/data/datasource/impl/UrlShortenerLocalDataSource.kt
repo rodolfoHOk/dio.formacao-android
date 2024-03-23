@@ -8,8 +8,9 @@ import me.dio.android.hilt.urlshortener.data.dao.ShortenedUrlDao
 import me.dio.android.hilt.urlshortener.data.datasource.UrlShortenerDataSource
 import me.dio.android.hilt.urlshortener.data.model.ShortenedUrlEntity
 import me.dio.android.hilt.urlshortener.domain.ShortenedUrl
+import javax.inject.Inject
 
-class UrlShortenerLocalDataSource(
+class UrlShortenerLocalDataSource @Inject constructor(
     private val dao: ShortenedUrlDao
 ) : UrlShortenerDataSource.Local {
 
