@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.HiltUrlShortener" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.HiltUrlShortener" parent="Base.Theme.HiltUrlShortener" />
+
+    <style name="Theme.HiltUrlShortener.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.HiltUrlShortener.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

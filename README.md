@@ -195,3 +195,7 @@
 - [PDF](/files/Curso%2007%20-%20Injeção%20de%20Dependências%20no%20Android%20com%20Hilt.pdf)
 
 - [Hilt](https://developer.android.com/training/dependency-injection/hilt-android?hl=pt-br)
+
+- [Código fonte](/android/hilt/)
+
+- [Código fonte 2](/android/HiltUrlShortener/)
