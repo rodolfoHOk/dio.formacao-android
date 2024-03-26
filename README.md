@@ -206,4 +206,8 @@
 
 - [Jetpack Compose](https://developer.android.com/develop/ui/compose?hl=pt-br)
 
-- [Código fonte]()
+- [Código fonte](/android/Compose/)
+
+- [Material 3 Typography](https://m3.material.io/styles/typography/overview)
+
+- [Compose layouts](https://developer.android.com/develop/ui/compose/layouts/basics?hl=pt-br)
