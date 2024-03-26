@@ -17,9 +17,14 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -49,10 +54,50 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen() {
-    Column(verticalArrangement = Arrangement.Center) {
-        DogCard(dog = Dog("Luna", "Chow Chow"), modifier = Modifier.background(Color.Green))
+    var clicks by remember {
+        mutableStateOf(0)
+    }
 
-        DogCard(dog = Dog("Zoey", "Pit Bull"), modifier = Modifier.background(Color.Yellow))
+    Column(
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        ClickCounter(clicks = clicks) {
+            clicks++
+        }
+
+        HelloContent()
+    }
+}
+
+@Composable
+fun HelloContent() {
+    Column(modifier = Modifier.padding(16.dp)) {
+        var name by remember { mutableStateOf("") }
+
+        if (name.isNotEmpty()) {
+            Text(
+                text = "Hello, $name!",
+                modifier = Modifier.padding(bottom = 8.dp),
+                style = MaterialTheme.typography.bodyMedium
+            )
+        }
+
+        OutlinedTextField(
+            value = name,
+            onValueChange = { name = it },
+            label = {
+                Text("Name")
+            }
+        )
+    }
+}
+
+@Composable
+fun ClickCounter(clicks: Int, onClick: () -> Unit) {
+    Button(onClick = onClick) {
+        Text("I've been clicked $clicks times")
     }
 }
 
