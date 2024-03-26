@@ -213,3 +213,5 @@
 - [Compose layouts](https://developer.android.com/develop/ui/compose/layouts/basics?hl=pt-br)
 
 - [Compose state](https://developer.android.com/develop/ui/compose/state?hl=pt-br)
+
+- [Compose lista e grades](https://developer.android.com/develop/ui/compose/lists?hl=pt-br)
