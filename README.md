@@ -199,3 +199,11 @@
 - [Código fonte](/android/hilt/)
 
 - [Código fonte 2](/android/HiltUrlShortener/)
+
+### Interfaces de Usuário Dinâmicas no Android com Jetpack Compose
+
+- [PDF](/files/Curso%2008%20-%20Interfaces%20de%20Usuário%20Dinâmicas%20no%20Android%20com%20Jetpack%20Compose.pdf)
+
+- [Jetpack Compose](https://developer.android.com/develop/ui/compose?hl=pt-br)
+
+- [Código fonte]()
